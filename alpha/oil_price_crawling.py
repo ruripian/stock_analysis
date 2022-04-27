@@ -37,7 +37,7 @@ def get_data(url_name):
             month = re.findall("\d+", s[0])
             day = re.findall("\d+", s[1])
             np_date[control-1] = datetime(int(year[0]),int(month[0]),int(day[0]))
-            if td[3].text == "N.A":
+            if td[3].text == "N.A" or td[3].text == "-":
                 np_dubai[control-1] = 0    
             else:
                 np_dubai[control-1] = re.findall("\d+.\d+",td[3].text)[0]
@@ -204,7 +204,7 @@ result_data = pd.concat([result_data,get_data('https://www.keei.re.kr/web_keei/d
 result_data = pd.concat([result_data,get_data('https://www.keei.re.kr/web_keei/d_results.nsf/0/DCCC1D74BA4C82244925771900001566?opendocument&menucode=SS89&category=%B1%B9%C1%A6%BF%F8%C0%AF%B0%A1%B0%DD&rescategory=%EC%A0%84%EC%B2%B4&viewname=main_periodicals_01')])
 result_data = pd.concat([result_data,get_data('https://www.keei.re.kr/web_keei/d_results.nsf/0/3690E8DC0C0914AB492576F800834E98?opendocument&menucode=SS89&category=%B1%B9%C1%A6%BF%F8%C0%AF%B0%A1%B0%DD&rescategory=%EC%A0%84%EC%B2%B4&viewname=main_periodicals_01')])
 result_data = pd.concat([result_data,get_data('https://www.keei.re.kr/web_keei/d_results.nsf/0/4E6FA6EF0D977274492576A200007B40?opendocument&menucode=SS89&category=%B1%B9%C1%A6%BF%F8%C0%AF%B0%A1%B0%DD&rescategory=%EC%A0%84%EC%B2%B4&viewname=main_periodicals_01')])
-result_data = pd.concat([result_data,get_data('https://www.keei.re.kr/web_keei/d_results.nsf/0/BB3F1BBE1260C9E4492576DB0000D7A2?opendocument&menucode=SS89&category=%B1%B9%C1%A6%BF%F8%C0%AF%B0%A1%B0%DD&rescategory=%EC%A0%84%EC%B2%B4&viewname=main_periodicals_01')])
+#result_data = pd.concat([result_data,get_data('https://www.keei.re.kr/web_keei/d_results.nsf/0/BB3F1BBE1260C9E4492576DB0000D7A2?opendocument&menucode=SS89&category=%B1%B9%C1%A6%BF%F8%C0%AF%B0%A1%B0%DD&rescategory=%EC%A0%84%EC%B2%B4&viewname=main_periodicals_01')])
 
 result_data.sort_values('date')
 print(result_data)
